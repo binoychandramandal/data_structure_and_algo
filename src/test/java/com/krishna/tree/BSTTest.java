@@ -2,6 +2,8 @@ package com.krishna.tree;
 
 import static org.junit.Assert.*;
 
+import java.util.Iterator;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,6 +41,17 @@ public class BSTTest {
 		assertEquals(0, bst.size());
 		populateTree();
 		assertEquals(4, bst.size());
+	}
+	
+	@Test
+	public void testIterable() {
+		populateTree();
+		//bst.forEach(x->System.out.println(x));
+		Iterator<Integer> ite = bst.iterator();
+		while (ite.hasNext()) {
+			System.out.println(ite.next());
+			
+		}
 	}
 
 	private void populateTree() {

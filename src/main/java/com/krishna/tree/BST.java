@@ -1,5 +1,9 @@
 package com.krishna.tree;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Stack;
+
 /**
  * Binary Search Tree is a node-based binary tree data structure which has the
  * following properties: The left subtree of a node contains only nodes with
@@ -11,7 +15,7 @@ package com.krishna.tree;
  *
  * @param <Item>
  */
-public class BST<Item extends Comparable<Item>> {
+public class BST<Item extends Comparable<Item>> implements Iterable<Item> {
 
 	private TreeNode<Item> root;
 
@@ -87,4 +91,41 @@ public class BST<Item extends Comparable<Item>> {
 		return exists;
 	}
 
+	public Iterator<Item> iterator() {
+		return new DepthFirstIterator();
+	}
+	
+	
+	public class DepthFirstIterator implements Iterator<Item> {
+
+	    private Stack<TreeNode<Item>> fringe = new Stack<TreeNode<Item>> ( );
+
+	    public DepthFirstIterator ( ) {
+	        if (root != null) {
+	            fringe.push (root);
+	        }
+	    }
+
+	    public boolean hasNext ( ) {
+	        return !fringe.empty ( );
+	    }
+
+	    public Item next ( ) {
+	        if (!hasNext ( )) {
+	            throw new NoSuchElementException ("tree ran out of elements");
+	        }
+	        TreeNode<Item> node = fringe.pop ( );
+	        if (node.getRight() != null) {
+	            fringe.push (node.getRight());
+	        }
+	        if (node.getLeft() != null) {
+	            fringe.push (node.getLeft());
+	        }
+	        return node.getData();
+	    }
+
+	    public void remove () {
+	        throw new UnsupportedOperationException ();
+	    }
+	}
 }
