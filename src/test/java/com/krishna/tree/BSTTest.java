@@ -7,27 +7,45 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class BSTTest {
-	
+
 	BST<Integer> bst;
 
 	@Before
 	public void setUp() throws Exception {
-		bst=new BST<>();
+		bst = new BST<>();
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		bst=null;
+		bst = null;
 	}
 
 	@Test
 	public void testAddForSuccess() {
-		bst.add(10);
+		populateTree();
+		assertEquals(4, bst.size());
+	}
+
+	@Test
+	public void testexistsElements() {
+		populateTree();
+		assertEquals(false, bst.contains(4));
+		assertEquals(true, bst.contains(10));
+		assertEquals(false, bst.contains(null));
+	}
+
+	@Test
+	public void testElementsCount() {
+		assertEquals(0, bst.size());
+		populateTree();
+		assertEquals(4, bst.size());
+	}
+
+	private void populateTree() {
 		bst.add(20);
 		bst.add(9);
 		bst.add(25);
-		assertEquals(4, bst.size());
-
+		bst.add(10);
 	}
 
 }

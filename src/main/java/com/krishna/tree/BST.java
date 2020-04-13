@@ -1,6 +1,5 @@
 package com.krishna.tree;
 
-
 /**
  * Binary Search Tree is a node-based binary tree data structure which has the
  * following properties: The left subtree of a node contains only nodes with
@@ -42,8 +41,7 @@ public class BST<Item extends Comparable<Item>> {
 	 * @param data
 	 */
 	public void add(Item data) {
-		
-		if(data==null)
+		if (data == null)
 			return;
 		TreeNode<Item> newNode = new TreeNode<Item>(data);
 		if (isEmpty()) {
@@ -65,6 +63,28 @@ public class BST<Item extends Comparable<Item>> {
 				pre.setRight(newNode);
 		}
 		length++;
+	}
+
+	/**
+	 * exists given data or not
+	 * 
+	 * @param data
+	 */
+	public boolean contains(Item data) {
+		boolean exists = false;
+		if (data == null)
+			return exists;
+		TreeNode<Item> current = root;
+		while (current != null) {
+			if (current.getData().compareTo(data) == 0)
+				return !exists;
+			if (current.getData().compareTo(data) > 0) {
+				current = current.getLeft();
+			} else {
+				current = current.getRight();
+			}
+		}
+		return exists;
 	}
 
 }
