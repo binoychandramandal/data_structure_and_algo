@@ -5,63 +5,63 @@ package com.krishna.tree;
  * 
  * @author Krishna
  *
- * @param <T>
+ * @param <Item>
  */
-public class TreeNode<T extends Comparable<T>> {
+public class TreeNode<Item extends Comparable<Item>> {
 	/**
 	 * Data holder for consumer use only
 	 */
-	private T data;
+	private Item data;
 
 	/**
 	 * Internal structure holder for tree
 	 */
-	private TreeNode<T> left;
+	private TreeNode<Item> left;
 
-	private TreeNode<T> right;
+	private TreeNode<Item> right;
 
 	public TreeNode() {
 	}
 
-	public TreeNode(T data) {
+	public TreeNode(Item data) {
 		this(data, null, null);
 	}
 
-	public TreeNode(TreeNode<T> left, T data) {
+	public TreeNode(TreeNode<Item> left, Item data) {
 		this(data, left, null);
 	}
 
-	public TreeNode(T data, TreeNode<T> right) {
+	public TreeNode(Item data, TreeNode<Item> right) {
 		this(data, null, right);
 	}
 
-	public TreeNode(T data, TreeNode<T> left, TreeNode<T> right) {
+	public TreeNode(Item data, TreeNode<Item> left, TreeNode<Item> right) {
 		this.data = data;
 		this.left = left;
 		this.right = right;
 	}
 
-	public T getData() {
+	public Item getData() {
 		return data;
 	}
 
-	public void setData(T data) {
+	public void setData(Item data) {
 		this.data = data;
 	}
 
-	public TreeNode<T> getLeft() {
+	public TreeNode<Item> getLeft() {
 		return left;
 	}
 
-	public void setLeft(TreeNode<T> left) {
+	public void setLeft(TreeNode<Item> left) {
 		this.left = left;
 	}
 
-	public TreeNode<T> getRight() {
+	public TreeNode<Item> getRight() {
 		return right;
 	}
 
-	public void setRight(TreeNode<T> right) {
+	public void setRight(TreeNode<Item> right) {
 		this.right = right;
 	}
 
