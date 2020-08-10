@@ -1,11 +1,9 @@
 package com.algo.recursion;
 
-
-
 public class HeightOfTree {
 
 	public static void main(String[] args) {
-		
+
 		Node<Integer> root=new Node<Integer>(10);
 		root.left=new Node<Integer>(20);
 		root.right=new Node<Integer>(30);
